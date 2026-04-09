@@ -25,16 +25,16 @@ const ChatPanel = ({ selectedAgent, messages, onSendMessage, onClose }) => {
     : messages;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-gray-800 rounded-lg w-full max-w-2xl h-3/4 flex flex-col">
+    <div className="transition-theme fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="transition-theme bg-card rounded-2xl w-full max-w-2xl h-3/4 flex flex-col border border-border shadow-xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h3 className="text-lg font-semibold text-white">
+        <div className="transition-theme flex items-center justify-between p-4 border-b border-border bg-surface/50">
+          <h3 className="text-lg font-semibold text-foreground">
             Chat with {selectedAgent?.name || 'Orchestrator'}
           </h3>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+            className="transition-theme p-2 hover:bg-surface rounded-lg text-muted-foreground"
           >
             <X size={20} />
           </button>
@@ -49,18 +49,18 @@ const ChatPanel = ({ selectedAgent, messages, onSendMessage, onClose }) => {
         </div>
 
         {/* Input */}
-        <form onSubmit={handleSubmit} className="p-4 border-t border-gray-700">
+        <form onSubmit={handleSubmit} className="transition-theme p-4 border-t border-border">
           <div className="flex space-x-2">
             <input
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder={`Message ${selectedAgent?.name || 'Orchestrator'}...`}
-              className="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="transition-theme flex-1 bg-surface border border-border rounded-lg px-4 py-2 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors"
+              className="transition-theme bg-primary hover:opacity-90 text-primary-foreground px-4 py-2 rounded-lg font-medium"
             >
               <Send size={20} />
             </button>

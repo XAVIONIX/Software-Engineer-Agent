@@ -14,11 +14,11 @@ const RightPanel = ({ activeTab, onTabChange, logs }) => {
       case 'ui-preview':
         return (
           <div className="p-4">
-            <div className="bg-white rounded-lg p-4 mb-4">
-              <div className="text-gray-800">
+            <div className="transition-theme bg-card rounded-lg p-4 mb-4 border border-border">
+              <div className="text-foreground">
                 <h3 className="font-bold mb-2">Generated UI Component</h3>
-                <div className="border rounded p-2 bg-gray-50">
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded">Sample Button</button>
+                <div className="transition-theme border border-border rounded p-2 bg-surface">
+                  <button className="transition-theme bg-primary text-primary-foreground px-4 py-2 rounded font-medium">Sample Button</button>
                 </div>
               </div>
             </div>
@@ -27,8 +27,8 @@ const RightPanel = ({ activeTab, onTabChange, logs }) => {
       case 'app-preview':
         return (
           <div className="p-4">
-            <div className="bg-gray-800 rounded-lg p-4 border">
-              <div className="text-center text-gray-400">
+            <div className="transition-theme bg-surface rounded-lg p-4 border border-border">
+              <div className="text-center text-muted-foreground">
                 <Monitor size={48} className="mx-auto mb-2" />
                 <p>App Preview Simulation</p>
                 <p className="text-sm">Running application would appear here</p>
@@ -39,7 +39,7 @@ const RightPanel = ({ activeTab, onTabChange, logs }) => {
       case 'architecture':
         return (
           <div className="p-4">
-            <div className="text-center text-gray-400">
+            <div className="text-center text-muted-foreground">
               <FileText size={48} className="mx-auto mb-2" />
               <p>System Architecture Diagram</p>
             </div>
@@ -50,10 +50,10 @@ const RightPanel = ({ activeTab, onTabChange, logs }) => {
           <div className="p-4">
             <div className="space-y-2 font-mono text-sm">
               {logs.map((log, index) => (
-                <div key={index} className="bg-gray-800 p-2 rounded">
-                  <span className="text-gray-400">[{log.timestamp}]</span>
-                  <span className="text-blue-400 ml-2">{log.agent}:</span>
-                  <span className="text-white ml-2">{log.message}</span>
+                <div key={index} className="transition-theme bg-surface p-2 rounded border border-border">
+                  <span className="text-muted-foreground">[{log.timestamp}]</span>
+                  <span className="text-primary ml-2 font-medium">{log.agent}:</span>
+                  <span className="text-foreground ml-2">{log.message}</span>
                 </div>
               ))}
             </div>
@@ -65,17 +65,17 @@ const RightPanel = ({ activeTab, onTabChange, logs }) => {
   };
 
   return (
-    <div className="w-96 bg-gray-800 border-l border-gray-700 flex flex-col">
+    <div className="transition-theme w-96 bg-card border-l border-border flex flex-col">
       {/* Tabs */}
-      <div className="flex border-b border-gray-700">
+      <div className="transition-theme flex border-b border-border">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
-            className={`flex-1 flex flex-col items-center py-3 px-2 transition-colors ${
+            className={`transition-theme flex-1 flex flex-col items-center py-3 px-2 font-medium ${
               activeTab === tab.id
-                ? 'bg-blue-600 text-white'
-                : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                ? 'bg-primary/10 text-primary border-b-2 border-primary'
+                : 'text-muted-foreground hover:text-foreground hover:bg-surface-light'
             }`}
           >
             <tab.icon size={20} />

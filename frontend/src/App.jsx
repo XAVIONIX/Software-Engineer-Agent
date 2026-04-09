@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import ChatPanel from './components/ChatPanel';
 import { mockAgents, mockMessages, mockProjects, mockSummary } from './data/mockData';
 
-function App() {
+function AppContent() {
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [messages, setMessages] = useState(mockMessages);
   const [agents, setAgents] = useState(mockAgents);
@@ -53,7 +54,7 @@ function App() {
   };
 
   return (
-    <div className="h-screen bg-gray-900 text-white flex flex-col">
+    <div className="transition-theme h-screen bg-background text-foreground flex flex-col">
       <Header />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar
@@ -75,6 +76,14 @@ function App() {
         />
       )}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

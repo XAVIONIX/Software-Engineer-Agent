@@ -16,10 +16,10 @@ const agentIcons = {
 };
 
 const statusColors = {
-  idle: 'bg-gray-500',
-  thinking: 'bg-yellow-500',
-  working: 'bg-blue-500',
-  reviewing: 'bg-green-500',
+  idle: 'bg-muted-foreground',
+  thinking: 'bg-warning',
+  working: 'bg-primary',
+  reviewing: 'bg-success',
 };
 
 const AgentCard = ({ agent, isSelected, onClick }) => {
@@ -28,23 +28,23 @@ const AgentCard = ({ agent, isSelected, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className={`p-3 rounded-lg border cursor-pointer transition-all ${
+      className={`transition-theme p-3 rounded-lg border cursor-pointer font-medium ${
         isSelected
-          ? 'border-blue-500 bg-blue-900/20'
-          : 'border-gray-600 bg-gray-700/50 hover:bg-gray-700'
+          ? 'border-primary/50 bg-primary/10'
+          : 'border-border bg-surface/50 hover:bg-surface-light'
       }`}
     >
       <div className="flex items-center space-x-3">
         <div className="relative">
-          <div className="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center">
-            <Icon size={20} className="text-white" />
+          <div className="transition-theme w-10 h-10 bg-surface rounded-full flex items-center justify-center border border-border">
+            <Icon size={20} className="text-foreground" />
           </div>
-          <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full ${statusColors[agent.status]}`}></div>
+          <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full ${statusColors[agent.status]} animate-pulse`}></div>
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-sm font-medium text-white truncate">{agent.name}</div>
-          <div className="text-xs text-gray-400 capitalize">{agent.status}</div>
-          <div className="text-xs text-gray-500 truncate">{agent.lastAction}</div>
+          <div className="text-sm font-medium text-foreground truncate">{agent.name}</div>
+          <div className="text-xs text-muted-foreground capitalize">{agent.status}</div>
+          <div className="text-xs text-muted-foreground/70 truncate">{agent.lastAction}</div>
         </div>
       </div>
     </div>

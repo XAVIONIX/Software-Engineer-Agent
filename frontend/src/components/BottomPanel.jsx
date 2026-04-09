@@ -14,16 +14,16 @@ const BottomPanel = ({ activeTab, onTabChange, code }) => {
       case 'frontend-code':
         return (
           <div className="h-full flex">
-            <div className="w-48 bg-gray-800 border-r border-gray-700 p-2">
-              <div className="text-sm text-gray-400 mb-2">src/components/</div>
+            <div className="transition-theme w-48 bg-surface border-r border-border p-2">
+              <div className="text-sm text-muted-foreground mb-2">src/components/</div>
               <div className="space-y-1 text-sm">
-                <div className="text-blue-400">App.jsx</div>
-                <div className="text-blue-400">Header.jsx</div>
-                <div className="text-blue-400">Sidebar.jsx</div>
+                <div className="text-primary font-medium">App.jsx</div>
+                <div className="text-primary font-medium">Header.jsx</div>
+                <div className="text-primary font-medium">Sidebar.jsx</div>
               </div>
             </div>
-            <div className="flex-1 bg-gray-900 p-4">
-              <pre className="text-green-400 text-sm overflow-x-auto">
+            <div className="transition-theme flex-1 bg-background p-4">
+              <pre className="text-success text-sm overflow-x-auto">
                 <code>{code.frontend}</code>
               </pre>
             </div>
@@ -32,16 +32,16 @@ const BottomPanel = ({ activeTab, onTabChange, code }) => {
       case 'backend-code':
         return (
           <div className="h-full flex">
-            <div className="w-48 bg-gray-800 border-r border-gray-700 p-2">
-              <div className="text-sm text-gray-400 mb-2">app/</div>
+            <div className="transition-theme w-48 bg-surface border-r border-border p-2">
+              <div className="text-sm text-muted-foreground mb-2">app/</div>
               <div className="space-y-1 text-sm">
-                <div className="text-blue-400">main.py</div>
-                <div className="text-blue-400">api/</div>
-                <div className="text-blue-400">services/</div>
+                <div className="text-primary font-medium">main.py</div>
+                <div className="text-primary font-medium">api/</div>
+                <div className="text-primary font-medium">services/</div>
               </div>
             </div>
-            <div className="flex-1 bg-gray-900 p-4">
-              <pre className="text-green-400 text-sm overflow-x-auto">
+            <div className="transition-theme flex-1 bg-background p-4">
+              <pre className="text-success text-sm overflow-x-auto">
                 <code>{code.backend}</code>
               </pre>
             </div>
@@ -50,7 +50,7 @@ const BottomPanel = ({ activeTab, onTabChange, code }) => {
       case 'database':
         return (
           <div className="p-4">
-            <pre className="text-yellow-400 text-sm">
+            <pre className="text-warning text-sm">
               <code>{code.database}</code>
             </pre>
           </div>
@@ -58,7 +58,7 @@ const BottomPanel = ({ activeTab, onTabChange, code }) => {
       case 'files':
         return (
           <div className="p-4">
-            <div className="text-gray-400">File structure would be displayed here</div>
+            <div className="text-muted-foreground">File structure would be displayed here</div>
           </div>
         );
       default:
@@ -67,17 +67,17 @@ const BottomPanel = ({ activeTab, onTabChange, code }) => {
   };
 
   return (
-    <div className="h-96 bg-gray-800 border-t border-gray-700 flex flex-col">
+    <div className="transition-theme h-96 bg-card border-t border-border flex flex-col">
       {/* Tabs */}
-      <div className="flex border-b border-gray-700">
+      <div className="transition-theme flex border-b border-border">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => onTabChange(tab.id)}
-            className={`flex-1 flex items-center justify-center py-2 px-4 transition-colors ${
+            className={`transition-theme flex-1 flex items-center justify-center py-2 px-4 font-medium ${
               activeTab === tab.id
-                ? 'bg-blue-600 text-white'
-                : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                ? 'bg-primary/10 text-primary border-b-2 border-primary'
+                : 'text-muted-foreground hover:text-foreground hover:bg-surface-light'
             }`}
           >
             <tab.icon size={16} className="mr-2" />
